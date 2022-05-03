@@ -50,6 +50,14 @@ class Flat(models.Model):
 
     new_building = models.BooleanField('Новостройка', null=True, blank=True, db_index=True)
 
+    likes = models.ForeignKey(User,
+                              verbose_name='Кто лайкнул',
+                              on_delete=models.CASCADE,
+                              null=True,
+                              blank=True,
+                              db_index=True
+                              )
+
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
@@ -58,6 +66,7 @@ class Claim(models.Model):
     author = models.ForeignKey(User,
                                verbose_name='Кто пожаловался',
                                on_delete=models.CASCADE,
+                               null=True,
                                db_index=True
                                )
 
