@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
+    'phonenumber_field',
     'property.apps.PropertyConfig',
 ]
 
@@ -100,3 +100,6 @@ DATABASES = {
         os.getenv('DATABASE', 'sqlite:///db.sqlite3')
     ),
 }
+
+PHONENUMBER_DEFAULT_REGION='RU'
+PHONENUMBER_DB_FORMAT='INTERNATIONAL'
