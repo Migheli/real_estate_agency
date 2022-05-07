@@ -13,7 +13,6 @@ def owner_pure_phone_auto_filler(apps, schema_editor):
                                                                phonenumbers.PhoneNumberFormat.E164)
             flat.save()
 
-
 class Migration(migrations.Migration):
 
     dependencies = [

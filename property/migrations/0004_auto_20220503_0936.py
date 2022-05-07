@@ -7,9 +7,7 @@ def new_building_auto_filler(apps, schema_editor):
     for flat in Flat.objects.all().iterator():
         if flat.construction_year > 2014:
             flat.new_building = True
-        else:
-            flat.new_building = False
-        flat.save()
+            flat.save()
 
 class Migration(migrations.Migration):
 
