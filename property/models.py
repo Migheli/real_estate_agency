@@ -57,7 +57,8 @@ class Flat(models.Model):
                               on_delete=models.CASCADE,
                               null=True,
                               blank=True,
-                              db_index=True
+                              db_index=True,
+                              related_name='liked_flats'
                               )
 
 
@@ -70,13 +71,15 @@ class Claim(models.Model):
                                verbose_name='Кто пожаловался',
                                on_delete=models.CASCADE,
                                null=True,
-                               db_index=True
+                               db_index=True,
+                               related_name='cliamed_flats'
                                )
 
     flat = models.ForeignKey(Flat,
                              verbose_name='Квартира, на которую пожаловались',
                              on_delete=models.CASCADE,
-                             db_index=True
+                             db_index=True,
+                             related_name='claims'
                              )
 
     text = models.TextField('Текст жалобы')
