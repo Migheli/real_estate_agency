@@ -2,12 +2,10 @@ from django.contrib import admin
 from .models import Flat, Claim, Owner
 
 
+@admin.register(Claim)
 class ClaimAdmin(admin.ModelAdmin):
     raw_id_fields = ['author', 'flat']
     list_display = ['author', 'flat', 'text']
-
-
-admin.site.register(Claim, ClaimAdmin)
 
 
 class FlatOwnersInline(admin.TabularInline):
@@ -15,6 +13,7 @@ class FlatOwnersInline(admin.TabularInline):
     raw_id_fields = ['owner']
 
 
+@admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'address', 'owner']
     readonly_fields = ['created_at']
@@ -30,15 +29,10 @@ class FlatAdmin(admin.ModelAdmin):
     inlines = [FlatOwnersInline]
 
 
-admin.site.register(Flat, FlatAdmin)
-
-
+@admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     list_display = ['owner_name',
                     'owners_phonenumber',
                     'owner_pure_phone',
                     ]
     raw_id_fields = ['flats_of_owner']
-
-
-admin.site.register(Owner, OwnerAdmin)
