@@ -99,7 +99,8 @@ class Owner(models.Model):
     flats_of_owner = models.ManyToManyField(Flat,
                                             verbose_name='Квартиры в собственности',
                                             related_name='owned_by',
-                                            db_index=True
+                                            db_index=True,
+                                            blank=True
                                             )
 
     def __str__(self):
