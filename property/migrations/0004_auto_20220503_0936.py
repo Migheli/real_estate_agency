@@ -2,12 +2,12 @@
 
 from django.db import migrations
 
+
 def new_building_auto_filler(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all().iterator():
-        if flat.construction_year > 2014:
-            flat.new_building = True
-            flat.save()
+        flat.new_building = flat.construction_year > 2014
+        flat.save()
 
 class Migration(migrations.Migration):
 
